@@ -10,3 +10,20 @@
 
 # Regresi Linear (Biasa)
 </div>
+
+//keterangan
+
+## Cara Kerja Singkat
+</div>
+
+//keterangan
+
+## Panduan Penggunaan
+</div>
+
+//keterangan
+
+## Output Program
+</div>
+
+//keterangan
