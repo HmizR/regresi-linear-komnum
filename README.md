@@ -14,7 +14,6 @@
 Aplikasi berbasis Streamlit untuk melakukan analisis regresi linear sederhana secara interaktif. Pengguna dapat memasukkan data secara manual atau melalui file CSV, melakukan analisis regresi, mengevaluasi asumsi model, melakukan prediksi, serta mengunduh hasil analisis.
 
 ## Fitur
-
 </div>
 
 - Input data secara manual.
@@ -39,9 +38,16 @@ Aplikasi berbasis Streamlit untuk melakukan analisis regresi linear sederhana se
 - Download hasil dalam format CSV, TXT, dan PNG.
 
 ## Tampilan Aplikasi
-
 </div>
 
+Berikut adalah tampilan aplikasi dengan menggunakan contoh input
+|   x   |    y    |
+| :---: |  :---:  |
+| 1 | 2 |
+| 2 | 3 |
+| 3 | 4 |
+| 4 | 5 |
+| 5 | 6 |
 ### Halaman Regresi
 
 ### Diagnostik Residual
