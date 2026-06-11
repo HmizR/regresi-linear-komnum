@@ -56,3 +56,35 @@ Berikut adalah tampilan aplikasi dengan menggunakan contoh input
 ### Prediksi
 
 ![image alt](https://github.com/HmizR/regresi-linear-komnum/blob/0e80543cdb488b3282196d168567918d8ae67f20/Prediksi.png)
+
+## Panduan Input Data
+</div>
+
+Aplikasi web ini menyediakan tiga metode input:
+
+### 1. Dataset Contoh
+Pilih salah satu dataset bawaan:
+- Kecil (n=5)
+- Sedang (n=10)
+- Dengan Noise
+
+### 2. Input Manual
+Masukkan data x dan y menggunakan format:
+
+x:
+1, 2, 3, 4, 5
+
+y:
+2, 4, 5, 4, 6
+
+Dengan menggunakan pemisah berupa koma atau spasi.
+
+### 3. Upload CSV
+Unggah file CSV dengan format:
+
+x,y
+1,2
+2,4
+3,5
+4,4
+5,6
