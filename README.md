@@ -38,7 +38,12 @@ Aplikasi berbasis Streamlit untuk melakukan analisis regresi linear sederhana se
 - Statistik deskriptif.
 - Download hasil dalam format CSV, TXT, dan PNG.
 
-## Output Program
+## Tampilan Aplikasi
+
 </div>
 
-//keterangan
+### Halaman Regresi
+
+### Diagnostik Residual
+
+### Prediksi
