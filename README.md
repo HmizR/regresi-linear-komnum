@@ -40,7 +40,7 @@ Aplikasi web berbasis Streamlit untuk melakukan analisis regresi linear sederhan
 ## Tampilan Aplikasi
 </div>
 
-Berikut adalah tampilan aplikasi dengan menggunakan contoh input
+Berikut adalah tampilan aplikasi web dengan menggunakan contoh input
 | Variabel | Data |
 | :--- | :--- |
 | x | 1, 2, 3, 4, 5 |
@@ -91,7 +91,7 @@ x,y
 
 ## Output Program
 </div>
-Berikut adalah beberapa jenis output yang dihasilkan:
+Berdasarkan input aplikasi web akan menghasilkan output dengan mengaplikasikan rumus regresi linear, berikut adalah beberapa jenis output yang dihasilkan:
 
 ### Regresi
 - Persamaan regresi.
