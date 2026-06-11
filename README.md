@@ -1,0 +1,6 @@
+|    NRP     |           Nama             |
+| :--------: |       :------------:       |
+| 5025251246 | Hamizan Rifqi Afandi                    |
+| 5025251247 | Gede Panji Dana Putra Ricedes                    |
+| 5025251248 | Maulana Bagas Rizqi Pratama            |
+| 5025251249 | Enver Alif Wirawan |
