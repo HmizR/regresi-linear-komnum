@@ -13,7 +13,7 @@ st.markdown("Aplikasi interaktif untuk analisis regresi linear dengan data **x**
 
 # ---------- SAMPLE DATASETS ----------
 SAMPLE_DATA = {
-    "Manual": None,
+    "Manual": pd.DataFrame({"x": [1, 2, 3, 4, 5], "y": [2, 4, 5, 4, 6]}),
     "Kecil (n=5)": pd.DataFrame({"x": [1, 2, 3, 4, 5], "y": [2, 4, 5, 4, 6]}),
     "Sedang (n=10)": pd.DataFrame({
         "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -23,18 +23,20 @@ SAMPLE_DATA = {
         "x": np.arange(1, 21),
         "y": 3 * np.arange(1, 21) + 5 + np.random.default_rng(42).normal(0, 5, 20)
     }),
-    "Non-linear": pd.DataFrame({
-        "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        "y": [1, 1.5, 3, 5, 8, 12, 17, 23, 30, 38]
-    }),
+    # "Non-linear": pd.DataFrame({
+    #     "x": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    #     "y": [1, 1.5, 3, 5, 8, 12, 17, 23, 30, 38]
+    # }),
 }
 
 # ---------- SIDEBAR: INPUT ----------
 with st.sidebar:
     st.header("Input Data")
 
-    sample_choice = st.selectbox("Gunakan data contoh", list(SAMPLE_DATA.keys()), index=1)
+    sample_choice = st.selectbox("Gunakan data contoh", list(SAMPLE_DATA.keys()), index=0)
 
+    df_samp = SAMPLE_DATA[sample_choice]
+    x, y = df_samp["x"].values, df_samp["y"].values
     if sample_choice == "Manual":
         input_mode = st.radio("Metode input", ["Text", "Upload CSV"], horizontal=True)
 
@@ -127,9 +129,16 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Regresi", "Diagnostik", "Prediksi", "St
 
 # ========== TAB 1: REGRESI ==========
 with tab1:
-    col_left, col_right = st.columns([3, 2])
+    st.subheader("Regresi")
+    col_left, col_right = st.columns([2, 4], gap="medium")
 
     with col_left:
+        st.metric("Persamaan", f"y = {beta0:.4f} + {beta1:.4f}x")
+        st.metric("R-squared", f"{R2:.6f}")
+        st.metric("Adj. R-squared", f"{adj_R2:.6f}")
+        st.metric("Std. Error (MSE)", f"{np.sqrt(MSE):.6f}")
+    
+    with col_right:
         fig, ax = plt.subplots(figsize=(9, 5.5))
         sns.set_style("whitegrid")
 
@@ -161,13 +170,11 @@ with tab1:
 
         st.pyplot(fig)
 
-    with col_right:
-        st.metric("Persamaan", f"y = {beta0:.4f} + {beta1:.4f}x")
-        st.metric("R-squared", f"{R2:.6f}")
-        st.metric("Adj. R-squared", f"{adj_R2:.6f}")
-        st.metric("Std. Error (MSE)", f"{np.sqrt(MSE):.6f}")
 
-        st.divider()
+    st.divider()
+    
+    col2_left, col2_right = st.columns(2)
+    with col2_left:
         st.caption("Koefisien")
         coef_df = pd.DataFrame({
             "Koefisien": ["Intercept", "Slope (x)"],
@@ -178,6 +185,7 @@ with tab1:
         })
         st.dataframe(coef_df, use_container_width=True, hide_index=True)
 
+    with col2_right:
         st.caption("Interval Kepercayaan 95%")
         ci_df = pd.DataFrame({
             "Parameter": ["Intercept", "Slope"],
@@ -198,7 +206,8 @@ with tab1:
 
 # ========== TAB 2: DIAGNOSTIK ==========
 with tab2:
-    col1, col2 = st.columns(2)
+    st.subheader("Diagnostik")
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         fig1, ax1 = plt.subplots(figsize=(6, 4))
@@ -225,7 +234,6 @@ with tab2:
         ax2.set_title("Q-Q Plot Residual")
         st.pyplot(fig2)
 
-    col3, col4 = st.columns(2)
     with col3:
         # Fitted vs Residual
         fig3, ax3 = plt.subplots(figsize=(6, 4))
@@ -236,6 +244,9 @@ with tab2:
         ax3.set_title("Fitted vs Residual")
         st.pyplot(fig3)
 
+    st.divider()
+
+    col4, col5 = st.columns(2)
     with col4:
         st.subheader("Uji Normalitas Residual")
         if n >= 3 and n <= 5000:
@@ -245,7 +256,9 @@ with tab2:
         else:
             st.info("Jumlah data tidak sesuai untuk uji Shapiro-Wilk.")
 
-        st.divider()
+        # st.divider()
+    
+    with col5:
         st.subheader("Ringkasan Diagnostik")
         skew = stats.skew(residuals)
         kurt = stats.kurtosis(residuals, fisher=True)
@@ -258,46 +271,67 @@ with tab2:
 
 # ========== TAB 3: PREDIKSI ==========
 with tab3:
-    st.subheader("Prediksi untuk Nilai x Baru")
 
-    x_min, x_max = float(x.min()), float(x.max())
-    x_new = st.number_input("Masukkan nilai x", value=(x_min + x_max) / 2, format="%f")
+    col_left, col_right = st.columns([2, 6])
 
-    if x_new:
-        y_new = beta0 + beta1 * x_new
-        se_fit_new = np.sqrt(MSE * (1 / n + (x_new - x_mean) ** 2 / Sxx))
-        se_pred_new = np.sqrt(MSE * (1 + 1 / n + (x_new - x_mean) ** 2 / Sxx))
+    with col_left:
+        st.subheader("Prediksi")
+        x_min, x_max = float(x.min()), float(x.max())
+        x_new = st.number_input("Masukkan nilai x", value=(x_min + x_max) / 2, format="%f")
 
-        ci_new_low = y_new - t_crit * se_fit_new
-        ci_new_high = y_new + t_crit * se_fit_new
-        pi_new_low = y_new - t_crit * se_pred_new
-        pi_new_high = y_new + t_crit * se_pred_new
+        st.divider()
+        if x_new:
+            y_new = beta0 + beta1 * x_new
+            se_fit_new = np.sqrt(MSE * (1 / n + (x_new - x_mean) ** 2 / Sxx))
+            se_pred_new = np.sqrt(MSE * (1 + 1 / n + (x_new - x_mean) ** 2 / Sxx))
 
-        col_a, col_b, col_c, col_d = st.columns(4)
-        col_a.metric("Prediksi y", f"{y_new:.6f}")
-        col_b.metric("CI 95% (rata-rata)", f"({ci_new_low:.4f}, {ci_new_high:.4f})")
-        col_c.metric("PI 95% (individu)", f"({pi_new_low:.4f}, {pi_new_high:.4f})")
-        col_d.metric("Std. Error Prediksi", f"{se_pred_new:.6f}")
+            ci_new_low = y_new - t_crit * se_fit_new
+            ci_new_high = y_new + t_crit * se_fit_new
+            pi_new_low = y_new - t_crit * se_pred_new
+            pi_new_high = y_new + t_crit * se_pred_new
 
-        # Show prediction on plot
-        fig_p, ax_p = plt.subplots(figsize=(8, 4.5))
-        sns.set_style("whitegrid")
-        ax_p.scatter(x, y, color="#2166ac", s=55, label="Data", zorder=5, edgecolors="white", linewidth=0.5)
+            # col_a, col_b, col_c, col_d = st.columns(4)
+            st.metric("Prediksi y", f"{y_new:.6f}")
+            st.metric("CI 95% (rata-rata)", f"({ci_new_low:.4f}, {ci_new_high:.4f})")
+            st.metric("PI 95% (individu)", f"({pi_new_low:.4f}, {pi_new_high:.4f})")
+            st.metric("Std. Error Prediksi", f"{se_pred_new:.6f}")
 
-        x_grid_p = np.linspace(x.min(), x.max(), 200)
-        y_grid_p = beta0 + beta1 * x_grid_p
-        se_grid_p = np.sqrt(MSE * (1 / n + (x_grid_p - x_mean) ** 2 / Sxx))
-        ax_p.plot(x_grid_p, y_grid_p, color="#b2182b", linewidth=2, label="Regresi", zorder=4)
-        ax_p.fill_between(x_grid_p, y_grid_p - t_crit * se_grid_p, y_grid_p + t_crit * se_grid_p,
-                          color="#2166ac", alpha=0.12)
+    with col_right:
+        if x_new:
+            y_new = beta0 + beta1 * x_new
+            se_fit_new = np.sqrt(MSE * (1 / n + (x_new - x_mean) ** 2 / Sxx))
+            se_pred_new = np.sqrt(MSE * (1 + 1 / n + (x_new - x_mean) ** 2 / Sxx))
 
-        ax_p.scatter([x_new], [y_new], color="green", s=120, zorder=6, marker="D",
-                     label=f"Prediksi ({x_new:.2f}, {y_new:.2f})", edgecolors="darkgreen", linewidth=1.5)
-        ax_p.legend(fontsize=10)
-        ax_p.set_xlabel("x")
-        ax_p.set_ylabel("y")
-        ax_p.set_title(f"Prediksi untuk x = {x_new:.4f}")
-        st.pyplot(fig_p)
+            ci_new_low = y_new - t_crit * se_fit_new
+            ci_new_high = y_new + t_crit * se_fit_new
+            pi_new_low = y_new - t_crit * se_pred_new
+            pi_new_high = y_new + t_crit * se_pred_new
+
+            # col_a, col_b, col_c, col_d = st.columns(4)
+            # col_a.metric("Prediksi y", f"{y_new:.6f}")
+            # col_b.metric("CI 95% (rata-rata)", f"({ci_new_low:.4f}, {ci_new_high:.4f})")
+            # col_c.metric("PI 95% (individu)", f"({pi_new_low:.4f}, {pi_new_high:.4f})")
+            # col_d.metric("Std. Error Prediksi", f"{se_pred_new:.6f}")
+
+            # Show prediction on plot
+            fig_p, ax_p = plt.subplots(figsize=(8, 4.5))
+            sns.set_style("whitegrid")
+            ax_p.scatter(x, y, color="#2166ac", s=55, label="Data", zorder=5, edgecolors="white", linewidth=0.5)
+
+            x_grid_p = np.linspace(x.min(), x.max(), 200)
+            y_grid_p = beta0 + beta1 * x_grid_p
+            se_grid_p = np.sqrt(MSE * (1 / n + (x_grid_p - x_mean) ** 2 / Sxx))
+            ax_p.plot(x_grid_p, y_grid_p, color="#b2182b", linewidth=2, label="Regresi", zorder=4)
+            ax_p.fill_between(x_grid_p, y_grid_p - t_crit * se_grid_p, y_grid_p + t_crit * se_grid_p,
+                            color="#2166ac", alpha=0.12)
+
+            ax_p.scatter([x_new], [y_new], color="green", s=120, zorder=6, marker="D",
+                        label=f"Prediksi ({x_new:.2f}, {y_new:.2f})", edgecolors="darkgreen", linewidth=1.5)
+            ax_p.legend(fontsize=10)
+            ax_p.set_xlabel("x")
+            ax_p.set_ylabel("y")
+            ax_p.set_title(f"Prediksi untuk x = {x_new:.4f}")
+            st.pyplot(fig_p)
 
 # ========== TAB 4: STATISTIK ==========
 with tab4:
