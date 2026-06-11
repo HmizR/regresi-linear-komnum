@@ -91,7 +91,7 @@ x,y
 
 ## Output Program
 </div>
-Berdasarkan input aplikasi web akan menghasilkan output dengan mengaplikasikan rumus regresi linear, berikut adalah beberapa jenis output yang dihasilkan:
+Berdasarkan input pengguna, aplikasi web akan menghasilkan output dengan mengaplikasikan rumus regresi linear, berikut adalah beberapa jenis output yang dihasilkan:
 
 ### Regresi
 - Persamaan regresi.
