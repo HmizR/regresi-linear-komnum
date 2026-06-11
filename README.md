@@ -11,7 +11,7 @@
 # Visualisasi Regresi Linear Sederhana
 </div>
 
-Aplikasi berbasis Streamlit untuk melakukan analisis regresi linear sederhana secara interaktif. Pengguna dapat memasukkan data secara manual atau melalui file CSV, melakukan analisis regresi, mengevaluasi asumsi model, melakukan prediksi, serta mengunduh hasil analisis.
+Aplikasi web berbasis Streamlit untuk melakukan analisis regresi linear sederhana secara interaktif. Pengguna dapat memasukkan data secara manual atau melalui file CSV, melakukan analisis regresi, mengevaluasi asumsi model, melakukan prediksi, serta mengunduh hasil analisis.
 
 ## Fitur
 </div>
