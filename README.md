@@ -47,6 +47,12 @@ Berikut adalah tampilan aplikasi dengan menggunakan contoh input
 | y | 2, 3, 4, 5, 6 |
 ### Halaman Regresi
 
+![image alt](https://github.com/HmizR/regresi-linear-komnum/blob/0e80543cdb488b3282196d168567918d8ae67f20/Regresi.png)
+
 ### Diagnostik Residual
 
+![image alt](https://github.com/HmizR/regresi-linear-komnum/blob/0e80543cdb488b3282196d168567918d8ae67f20/Diagnostik.png)
+
 ### Prediksi
+
+![image alt](https://github.com/HmizR/regresi-linear-komnum/blob/0e80543cdb488b3282196d168567918d8ae67f20/Prediksi.png)
