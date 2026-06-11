@@ -88,3 +88,34 @@ x,y
 3,5
 4,4
 5,6
+
+## Output Program
+</div>
+Aplikasi web menghasilkan beberapa jenis output:
+
+### Regresi
+- Persamaan regresi.
+- R-squared.
+- Adjusted R-squared.
+- Standard Error.
+
+### Diagnostik
+- Residual Plot.
+- Q-Q Plot.
+- Fitted vs Residual.
+- Uji Shapiro-Wilk.
+
+### Prediksi
+- Nilai prediksi Y.
+- Confidence Interval 95%.
+- Prediction Interval 95%.
+
+### Statistik
+- ANOVA.
+- Korelasi Pearson.
+- Statistik deskriptif.
+
+### Download
+- CSV hasil prediksi.
+- TXT ringkasan regresi.
+- PNG visualisasi regresi.
