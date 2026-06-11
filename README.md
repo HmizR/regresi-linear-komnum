@@ -8,22 +8,35 @@
 | 5025251248 | Maulana Bagas Rizqi Pratama  |
 | 5025251249 | Enver Alif Wirawan |
 
-# Regresi Linear (Biasa)
-</div>
-
-//keterangan
-
-## Visualisasi Regresi Linear Sederhana
+# Visualisasi Regresi Linear Sederhana
 </div>
 
 Aplikasi berbasis Streamlit untuk melakukan analisis regresi linear sederhana secara interaktif. Pengguna dapat memasukkan data secara manual atau melalui file CSV, melakukan analisis regresi, mengevaluasi asumsi model, melakukan prediksi, serta mengunduh hasil analisis.
 
-//keterangan
+## Fitur
 
-## Panduan Penggunaan
 </div>
 
-//keterangan
+- Input data secara manual.
+- Upload dataset CSV.
+- Dataset contoh bawaan.
+- Editor data interaktif.
+- Perhitungan regresi linear sederhana.
+- Visualisasi scatter plot dan garis regresi.
+- Confidence Interval (CI) 95%.
+- Prediction Interval (PI) 95%.
+- Tabel koefisien regresi.
+- Interval kepercayaan parameter.
+- Diagnostik residual:
+  - Residual vs X
+  - Q-Q Plot
+  - Fitted vs Residual
+  - Uji normalitas Shapiro-Wilk
+  - Skewness dan kurtosis
+- Prediksi nilai Y untuk nilai X baru.
+- Analisis ANOVA.
+- Statistik deskriptif.
+- Download hasil dalam format CSV, TXT, dan PNG.
 
 ## Output Program
 </div>
