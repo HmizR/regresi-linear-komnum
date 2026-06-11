@@ -91,7 +91,7 @@ x,y
 
 ## Output Program
 </div>
-Aplikasi web menghasilkan beberapa jenis output:
+Berikut adalah beberapa jenis output yang dihasilkan:
 
 ### Regresi
 - Persamaan regresi.
