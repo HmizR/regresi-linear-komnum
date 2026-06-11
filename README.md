@@ -41,13 +41,10 @@ Aplikasi berbasis Streamlit untuk melakukan analisis regresi linear sederhana se
 </div>
 
 Berikut adalah tampilan aplikasi dengan menggunakan contoh input
-|   x   |    y    |
-| :---: |  :---:  |
-| 1 | 2 |
-| 2 | 3 |
-| 3 | 4 |
-| 4 | 5 |
-| 5 | 6 |
+| Variabel | Data |
+| :--- | :--- |
+| x | 1, 2, 3, 4, 5 |
+| y | 2, 3, 4, 5, 6 |
 ### Halaman Regresi
 
 ### Diagnostik Residual
