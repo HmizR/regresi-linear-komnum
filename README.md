@@ -8,12 +8,16 @@
 | 5025251248 | Maulana Bagas Rizqi Pratama  |
 | 5025251249 | Enver Alif Wirawan |
 
+---
+
 # Visualisasi Regresi Linear Sederhana
 </div>
 
 Website: [https://regresi-linear-komnum.streamlit.app/](https://regresi-linear-komnum.streamlit.app/)
 
 Pada penugasan ini kami menggunakan aplikasi web berbasis Streamlit yang dapat melakukan analisis regresi linear sederhana secara interaktif. Pengguna dapat memasukkan data secara manual atau melalui file CSV, melakukan analisis regresi, mengevaluasi asumsi model, melakukan prediksi, serta mengunduh hasil analisis.
+
+---
 
 ## Fitur
 </div>
@@ -39,6 +43,8 @@ Pada penugasan ini kami menggunakan aplikasi web berbasis Streamlit yang dapat m
 - Statistik deskriptif.
 - Download hasil dalam format CSV, TXT, dan PNG.
 
+---
+
 ## Tampilan Aplikasi
 </div>
 
@@ -47,17 +53,20 @@ Berikut adalah tampilan aplikasi web dengan menggunakan contoh input
 | :--- | :--- |
 | x | 1, 2, 3, 4, 5 |
 | y | 2, 3, 4, 5, 6 |
+
 ### Halaman Regresi
 
-![image alt](https://github.com/HmizR/regresi-linear-komnum/blob/0e80543cdb488b3282196d168567918d8ae67f20/Regresi.png)
+![regression tab](./assets/Regresi.png)
 
 ### Diagnostik Residual
 
-![image alt](https://github.com/HmizR/regresi-linear-komnum/blob/0e80543cdb488b3282196d168567918d8ae67f20/Diagnostik.png)
+![diagnostic tab](./assets/Diagnostik.png)
 
 ### Prediksi
 
-![image alt](https://github.com/HmizR/regresi-linear-komnum/blob/0e80543cdb488b3282196d168567918d8ae67f20/Prediksi.png)
+![prediction tab](./assets/Prediksi.png)
+
+---
 
 ## Panduan Input Data
 </div>
@@ -73,23 +82,29 @@ Pilih salah satu dataset bawaan:
 ### 2. Input Manual
 Masukkan data x dan y menggunakan contoh format:
 
-x:
+Data x:
+```txt
 1, 2, 3, 4, 5
+```
 
-y:
+Data y:
+```txt
 2, 4, 5, 4, 6
+```
 
 Dengan menggunakan pemisah berupa koma atau spasi.
 
 ### 3. Upload CSV
 Unggah file CSV dengan contoh format:
 
+```csv 
 x,y
 1,2
 2,4
 3,5
 4,4
 5,6
+```
 
 ## Output Program
 </div>
