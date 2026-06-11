@@ -11,7 +11,7 @@
 # Visualisasi Regresi Linear Sederhana
 </div>
 
-[Regresi Linear Sederhana](https://regresilinear.kubela.id/)
+Website: [https://regresi-linear-komnum.streamlit.app/](https://regresi-linear-komnum.streamlit.app/)
 
 Pada penugasan ini kami menggunakan aplikasi web berbasis Streamlit yang dapat melakukan analisis regresi linear sederhana secara interaktif. Pengguna dapat memasukkan data secara manual atau melalui file CSV, melakukan analisis regresi, mengevaluasi asumsi model, melakukan prediksi, serta mengunduh hasil analisis.
 
