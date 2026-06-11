@@ -69,7 +69,7 @@ Pilih salah satu dataset bawaan:
 - Dengan Noise
 
 ### 2. Input Manual
-Masukkan data x dan y menggunakan format:
+Masukkan data x dan y menggunakan contoh format:
 
 x:
 1, 2, 3, 4, 5
@@ -80,7 +80,7 @@ y:
 Dengan menggunakan pemisah berupa koma atau spasi.
 
 ### 3. Upload CSV
-Unggah file CSV dengan format:
+Unggah file CSV dengan contoh format:
 
 x,y
 1,2
